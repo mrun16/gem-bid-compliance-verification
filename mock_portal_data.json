@@ -86,5 +86,269 @@
     "make_in_india_local_content_percent": 55,
     "blacklist_debarment_status": "BLACKLISTED - Debarred till Dec 2027 (prior tender fraud finding)",
     "oem_authorization_on_file": true
+  },
+  "AAHDK7890G": {
+    "bidder_name": "Kavya Precision Components Pvt Ltd",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 3 years",
+    "udyam_registration": {
+      "status": "Registered",
+      "udyam_number": "UDYAM-TN-07-0098765",
+      "category": "Small Enterprise"
+    },
+    "gst": {
+      "gstin": "33AAHDK7890G1Z4",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Not registered - workforce below statutory threshold",
+    "startup_india_status": "Registered - DPIIT recognized",
+    "nsic_status": "Registered - Valid till 2028",
+    "make_in_india_local_content_percent": 72,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": true
+  },
+  "AAJEL2345H": {
+    "bidder_name": "Lakshmi Textiles & Weaves",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 3 years",
+    "udyam_registration": {
+      "status": "Registered - Expired",
+      "udyam_number": "UDYAM-RJ-02-0011223",
+      "category": "Micro Enterprise (registration lapsed, renewal pending)"
+    },
+    "gst": {
+      "gstin": "08AAJEL2345H1Z6",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Not registered",
+    "make_in_india_local_content_percent": 90,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": false
+  },
+  "AAKFM6789I": {
+    "bidder_name": "Metrocity Electricals & Switchgear",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 3 years",
+    "udyam_registration": {
+      "status": "Registered",
+      "udyam_number": "UDYAM-KA-04-0055667",
+      "category": "Small Enterprise"
+    },
+    "gst": {
+      "gstin": "29AAKFM6789I1Z9",
+      "status": "Active",
+      "return_filing_status": "Partially filed - 1 quarter overdue"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Registered - Valid till 2025 (expired, renewal in process)",
+    "make_in_india_local_content_percent": 45,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": true
+  },
+  "AALGN0123J": {
+    "bidder_name": "New Horizon Startup Tech Pvt Ltd",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 2 years (incorporated 2 years ago)",
+    "udyam_registration": {
+      "status": "Registered",
+      "udyam_number": "UDYAM-HR-06-0077889",
+      "category": "Micro Enterprise"
+    },
+    "gst": {
+      "gstin": "06AALGN0123J1Z3",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Registered - DPIIT recognized, certificate valid till 2029",
+    "nsic_status": "Not registered",
+    "make_in_india_local_content_percent": 40,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": false
+  },
+  "AAMHO4567K": {
+    "bidder_name": "Om Sai Engineering Works",
+    "pan_status": "Invalid - PAN under verification hold by Income Tax Department",
+    "income_tax_compliance": "Cannot be determined - PAN status flagged",
+    "udyam_registration": {
+      "status": "Registered",
+      "udyam_number": "UDYAM-GJ-08-0088990",
+      "category": "Small Enterprise"
+    },
+    "gst": {
+      "gstin": "24AAMHO4567K1Z7",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Registered - Valid till 2026",
+    "make_in_india_local_content_percent": 60,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": true
+  },
+  "AANIP8901L": {
+    "bidder_name": "Paradise Furnishing & Interiors",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 3 years",
+    "udyam_registration": {
+      "status": "Registered",
+      "udyam_number": "UDYAM-WB-09-0099001",
+      "category": "Medium Enterprise"
+    },
+    "gst": {
+      "gstin": "19AANIP8901L1Z0",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Not registered",
+    "make_in_india_local_content_percent": 25,
+    "blacklist_debarment_status": "Under review - show-cause notice issued (pending inquiry, not yet debarred)",
+    "oem_authorization_on_file": true
+  },
+  "AAOJQ2345M": {
+    "bidder_name": "Bharat Defence Fabrications Ltd",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 3 years",
+    "udyam_registration": {
+      "status": "Not applicable - classified as Large Enterprise",
+      "udyam_number": null,
+      "category": "Large Enterprise"
+    },
+    "gst": {
+      "gstin": "23AAOJQ2345M1Z8",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Not applicable (Large Enterprise)",
+    "make_in_india_local_content_percent": 88,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": true
+  },
+  "AAPKR6789N": {
+    "bidder_name": "Coastal Marine Equipment Traders",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 3 years",
+    "udyam_registration": {
+      "status": "Registered",
+      "udyam_number": "UDYAM-KL-10-0010102",
+      "category": "Small Enterprise"
+    },
+    "gst": {
+      "gstin": "32AAPKR6789N1Z2",
+      "status": "Cancelled - GSTIN cancelled by department 3 months ago",
+      "return_filing_status": "Not applicable - GSTIN cancelled"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Registered - Valid till 2027",
+    "make_in_india_local_content_percent": 50,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": false
+  },
+  "AAQLS0123O": {
+    "bidder_name": "Himalayan Pure Foods Pvt Ltd",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 3 years",
+    "udyam_registration": {
+      "status": "Registered",
+      "udyam_number": "UDYAM-HP-11-0011213",
+      "category": "Micro Enterprise"
+    },
+    "gst": {
+      "gstin": "02AAQLS0123O1Z9",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Not registered",
+    "make_in_india_local_content_percent": 95,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": true
+  },
+  "AARMT4567P": {
+    "bidder_name": "Vindhya Construction & Infra Pvt Ltd",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Non-compliant - Demand notice pending for AY 2024-25",
+    "udyam_registration": {
+      "status": "Registered",
+      "udyam_number": "UDYAM-MP-12-0012324",
+      "category": "Small Enterprise"
+    },
+    "gst": {
+      "gstin": "23AARMT4567P1Z3",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Registered - Valid till 2027",
+    "make_in_india_local_content_percent": 58,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": true
+  },
+  "AASNU8901Q": {
+    "bidder_name": "Anand Agro Machinery Corp",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 3 years",
+    "udyam_registration": {
+      "status": "Registered",
+      "udyam_number": "UDYAM-PB-13-0013435",
+      "category": "Small Enterprise"
+    },
+    "gst": {
+      "gstin": "03AASNU8901Q1Z4",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Registered and compliant",
+    "esic_status": "Registered and compliant",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Registered - Valid till 2027",
+    "make_in_india_local_content_percent": 68,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": true
+  },
+  "AATOV2345R": {
+    "bidder_name": "Silverline Import-Export Traders",
+    "pan_status": "Valid",
+    "income_tax_compliance": "Compliant - Returns filed for last 3 years",
+    "udyam_registration": {
+      "status": "Not registered",
+      "udyam_number": null,
+      "category": null
+    },
+    "gst": {
+      "gstin": "07AATOV2345R1Z5",
+      "status": "Active",
+      "return_filing_status": "Up to date"
+    },
+    "epfo_status": "Not registered",
+    "esic_status": "Not registered",
+    "startup_india_status": "Not registered",
+    "nsic_status": "Not registered",
+    "make_in_india_local_content_percent": 10,
+    "blacklist_debarment_status": "Not blacklisted",
+    "oem_authorization_on_file": false
   }
 }
