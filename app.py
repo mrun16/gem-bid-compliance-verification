@@ -34,7 +34,7 @@ from google import genai
 # =========================================================
 API_KEY =  st.secrets["GEMINI_API_KEY"]
 
-MODEL = "gemini-3.6-flash"
+MODEL = "gemini-3.5-flash-lite"
 AUDIT_LOG_PATH = "audit_trail.json"
 
 
@@ -198,74 +198,176 @@ with tab1:
     portal_db = load_portal_database()
     bidder_pan = st.text_input("Bidder PAN", placeholder="e.g. AABCU1234C")
 
+    
     if st.button("🔍 Run Verification", type="primary"):
-        if not tender_file or not vendor_file:
-            st.warning("Please upload both the tender and vendor bid PDFs.")
+
+        if tender_file is None:
+            st.warning("❌ Tender PDF is missing.")
+
+        elif vendor_file is None:
+            st.warning("❌ Vendor bid PDF is missing.")
+
         elif not bidder_pan.strip():
-            st.warning("Please enter the bidder's PAN.")
+            st.warning("❌ Please enter the bidder's PAN.")
+
         elif API_KEY == "PASTE_YOUR_GEMINI_API_KEY_HERE":
-            st.error("⚠️ You haven't added your API key yet. Open app.py and paste it into the API_KEY variable.")
+            st.error("⚠️ You haven't added your API key yet.")
+
         else:
             client = genai.Client(api_key=API_KEY)
+
             bidder_pan_clean = bidder_pan.strip().upper()
             portal_record = portal_db.get(bidder_pan_clean)
 
             with st.spinner("Extracting tender text..."):
                 tender_text = extract_text_from_pdf(tender_file)
+
             with st.spinner("Extracting vendor bid text..."):
                 vendor_text = extract_text_from_pdf(vendor_file)
 
             injection_hits = detect_prompt_injection(vendor_text)
+
             if injection_hits:
-                st.error(f"🛡️ **Guardrail triggered:** the vendor's bid document contains suspicious phrasing that looks "
-                         f"like an attempt to manipulate the AI's output (matched: {', '.join(injection_hits)}). "
-                         f"This is flagged for the officer and factored into the AI's own analysis below.")
+                st.error(
+                    f"🛡️ **Guardrail triggered:** the vendor's bid document contains "
+                    f"suspicious phrasing that looks like an attempt to manipulate "
+                    f"the AI's output (matched: {', '.join(injection_hits)}). "
+                    f"This is flagged for the officer and factored into the AI's "
+                    f"own analysis below."
+                )
 
             with st.spinner("AI extracting compliance checklist from tender..."):
                 checklist = extract_tender_checklist(client, tender_text)
 
             if not checklist:
-                st.error("Couldn't extract a checklist from the tender document. Try a clearer/simpler tender PDF.")
+                st.error(
+                    "Couldn't extract a checklist from the tender document. "
+                    "Try a clearer/simpler tender PDF."
+                )
+
             else:
-                with st.spinner("Running AI Verification Engine (cross-checking portal data + bid document)..."):
-                    result = run_verification_engine(client, checklist, portal_record, vendor_text, bidder_pan_clean)
+                with st.spinner(
+                    "Running AI Verification Engine "
+                    "(cross-checking portal data + bid document)..."
+                ):
+                    result = run_verification_engine(
+                        client,
+                        checklist,
+                        portal_record,
+                        vendor_text,
+                        bidder_pan_clean
+                    )
 
                 if "error" in result:
-                    st.error("The AI response couldn't be parsed. Raw output below for debugging:")
+                    st.error(
+                        "The AI response couldn't be parsed. "
+                        "Raw output below for debugging:"
+                    )
                     st.code(result.get("raw_response", ""))
+
                 else:
-                    bidder_name = portal_record.get("bidder_name", "Unknown bidder") if portal_record else "Unknown bidder (no portal record found)"
+                    bidder_name = (
+                        portal_record.get("bidder_name", "Unknown bidder")
+                        if portal_record
+                        else "Unknown bidder (no portal record found)"
+                    )
+
                     score = result.get("compliance_score", 0)
                     risk = result.get("risk_level", "Unknown")
 
                     st.divider()
-                    st.subheader(f"📊 Compliance Dashboard — {bidder_name}")
+                    st.subheader(
+                        f"📊 Compliance Dashboard — {bidder_name}"
+                    )
 
                     m1, m2, m3 = st.columns(3)
-                    m1.metric("Compliance Score", f"{score}/100")
-                    risk_emoji = {"Low": "🟢", "Medium": "🟡", "High": "🔴"}.get(risk, "⚪")
-                    m2.metric("Risk Level", f"{risk_emoji} {risk}")
-                    m3.metric("Requirements Checked", len(result.get("requirement_results", [])))
+
+                    m1.metric(
+                        "Compliance Score",
+                        f"{score}/100"
+                    )
+
+                    risk_emoji = {
+                        "Low": "🟢",
+                        "Medium": "🟡",
+                        "High": "🔴"
+                    }.get(risk, "⚪")
+
+                    m2.metric(
+                        "Risk Level",
+                        f"{risk_emoji} {risk}"
+                    )
+
+                    m3.metric(
+                        "Requirements Checked",
+                        len(result.get("requirement_results", []))
+                    )
 
                     flags = result.get("flags", [])
+
                     if flags:
-                        st.error("**🚩 Red Flags Detected:**\n" + "\n".join(f"- {f}" for f in flags))
+                        st.error(
+                            "**🚩 Red Flags Detected:**\n"
+                            + "\n".join(f"- {f}" for f in flags)
+                        )
 
-                    st.info(f"**🤖 AI Recommendation (advisory only):** {result.get('recommendation', '')}")
+                    st.info(
+                        f"**🤖 AI Recommendation (advisory only):** "
+                        f"{result.get('recommendation', '')}"
+                    )
 
-                    st.markdown("#### Requirement-by-Requirement Status")
+                    st.markdown(
+                        "#### Requirement-by-Requirement Status"
+                    )
+
                     for r in result.get("requirement_results", []):
-                        status = r.get("status", "UNVERIFIABLE")
-                        icon = {"PASS": "🟢", "FAIL": "🔴", "INCONSISTENT": "🟡", "UNVERIFIABLE": "⚪"}.get(status, "⚪")
-                        st.markdown(f"{icon} **{r.get('requirement', '')}** — {status}")
-                        st.caption(r.get("evidence", ""))
+
+                        status = r.get(
+                            "status",
+                            "UNVERIFIABLE"
+                        )
+
+                        icon = {
+                            "PASS": "🟢",
+                            "FAIL": "🔴",
+                            "INCONSISTENT": "🟡",
+                            "UNVERIFIABLE": "⚪"
+                        }.get(status, "⚪")
+
+                        st.markdown(
+                            f"{icon} **{r.get('requirement', '')}** — {status}"
+                        )
+
+                        st.caption(
+                            r.get("evidence", "")
+                        )
 
                     st.divider()
-                    st.markdown("#### 👤 Procurement Officer's Final Decision")
-                    st.caption("The AI never decides this — it's logged separately for the audit trail.")
-                    decision = st.radio("Officer decision:", ["Not yet decided", "Qualify bidder", "Disqualify bidder", "Hold for further review"], key="decision")
 
-                    if st.button("💾 Save decision to audit trail"):
+                    st.markdown(
+                        "#### 👤 Procurement Officer's Final Decision"
+                    )
+
+                    st.caption(
+                        "The AI never decides this — "
+                        "it's logged separately for the audit trail."
+                    )
+
+                    decision = st.radio(
+                        "Officer decision:",
+                        [
+                            "Not yet decided",
+                            "Qualify bidder",
+                            "Disqualify bidder",
+                            "Hold for further review"
+                        ],
+                        key="decision"
+                    )
+
+                    if st.button(
+                        "💾 Save decision to audit trail"
+                    ):
+
                         entry = {
                             "timestamp": datetime.now().isoformat(),
                             "bidder_pan": bidder_pan_clean,
@@ -273,12 +375,18 @@ with tab1:
                             "compliance_score": score,
                             "risk_level": risk,
                             "flags": flags,
-                            "ai_recommendation": result.get("recommendation", ""),
+                            "ai_recommendation": result.get(
+                                "recommendation",
+                                ""
+                            ),
                             "officer_decision": decision
                         }
-                        save_audit_entry(entry)
-                        st.success("Saved to audit trail.")
 
+                        save_audit_entry(entry)
+
+                        st.success(
+                            "Saved to audit trail."
+                        )
 # ---------------- TAB 2: AUDIT TRAIL ----------------
 with tab2:
     st.subheader("📜 Verification Audit Trail")
